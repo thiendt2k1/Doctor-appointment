@@ -32,6 +32,7 @@ $object = new Appointment;
 						<div class="form-group">
 							<label>Patient Password</label>
 							<input type="password" name="patient_password" id="patient_password" class="form-control" required  data-parsley-trigger="keyup" />
+							<span> <i class="fa fa-eye" aria-hidden="true" id="togglePassword" ></i> </span>
 						</div>
 						<div class="form-group text-center">
 							<input type="hidden" name="action" value="patient_login" />
@@ -53,7 +54,6 @@ $object = new Appointment;
 include('footer.php');
 
 ?>
-
 
 <script>
 
@@ -97,6 +97,22 @@ $(document).ready(function(){
 
 });
 
-
+        const togglePassword = document.querySelector('#togglePassword');
+  
+        const password = document.querySelector('#password');
+  
+        togglePassword.addEventListener('click', () => {
+  
+            // Toggle the type attribute using
+            // getAttribure() method
+            const type = password
+                .getAttribute('type') === 'password' ?
+                'text' : 'password';
+                  
+            password.setAttribute('type', type);
+  
+            // Toggle the eye and bi-eye icon
+            this.classList.toggle('bi-eye');
+        });
 
 </script>
