@@ -12,7 +12,7 @@ if(isset($_POST["action"]))
 	{
 		if(isset($_SESSION['patient_id']))
 		{
-			echo 'auth/dashboard.php';
+			echo 'dashboard.php';
 		}
 		else
 		{
@@ -42,10 +42,9 @@ if(isset($_POST["action"]))
 		}
 		else
 		{
-			$patient_verification_code = md5(uniqid());
 			$data = array(
 				':patient_email_address'		=>	$object->clean_input($_POST["patient_email_address"]),
-				':patient_password'				=>	$_POST["patient_password"],
+				':patient_password'				=>	$object->hash_pass($_POST["patient_password"]),
 				':patient_first_name'			=>	$object->clean_input($_POST["patient_first_name"]),
 				':patient_last_name'			=>	$object->clean_input($_POST["patient_last_name"]),
 				':patient_date_of_birth'		=>	$object->clean_input($_POST["patient_date_of_birth"]),
@@ -54,22 +53,17 @@ if(isset($_POST["action"]))
 				':patient_phone_no'				=>	$object->clean_input($_POST["patient_phone_no"]),
 				':patient_maritial_status'		=>	$object->clean_input($_POST["patient_maritial_status"]),
 				':patient_added_on'				=>	$object->now,
-				':patient_verification_code'	=>	$patient_verification_code,
-				':email_verify'					=>	'No'
 			);
-			try {
+			
 				$object->query = "
 			INSERT INTO patient_table 
-			(patient_email_address, patient_password, patient_first_name, patient_last_name, patient_date_of_birth, patient_gender, patient_address, patient_phone_no, patient_maritial_status, patient_added_on, patient_verification_code, email_verify) 
-			VALUES (:patient_email_address, :patient_password, :patient_first_name, :patient_last_name, :patient_date_of_birth, :patient_gender, :patient_address, :patient_phone_no, :patient_maritial_status, :patient_added_on, :patient_verification_code, :email_verify)
+			(patient_email_address, patient_password, patient_first_name, patient_last_name, patient_date_of_birth, patient_gender, patient_address, patient_phone_no, patient_maritial_status, patient_added_on) 
+			VALUES (:patient_email_address, :patient_password, :patient_first_name, :patient_last_name, :patient_date_of_birth, :patient_gender, :patient_address, :patient_phone_no, :patient_maritial_status, :patient_added_on)
 			";
 
 				$object->execute($data);
 				//insert into database
-			}
-			catch(PDOException $e){
-				echo "Register failed: " . $e->getMessage();
-			}
+			
 		}
 
 	}
@@ -96,9 +90,7 @@ if(isset($_POST["action"]))
 
 			foreach($result as $row)
 			{
-				if($row["email_verify"] == 'Yes')
-				{
-					if($row["patient_password"] == $_POST["patient_password"])
+					if($row["patient_password"] == $object->hash_pass($_POST["patient_password"]))
 					{
 						$_SESSION['patient_id'] = $row['patient_id'];
 						$_SESSION['patient_name'] = $row['patient_first_name'] . ' ' . $row['patient_last_name'];
@@ -107,11 +99,6 @@ if(isset($_POST["action"]))
 					{
 						$error = '<div class="alert alert-danger">Wrong Password</div>';
 					}
-				}
-				else
-				{
-					$error = '<div class="alert alert-danger">Please first verify your email address</div>';
-				}
 			}
 		}
 		else
@@ -560,7 +547,5 @@ if(isset($_POST["action"]))
 		echo '<div class="alert alert-success">Your Appointment has been Cancel</div>';
 	}
 }
-
-
 
 ?>

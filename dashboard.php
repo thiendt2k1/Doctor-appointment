@@ -129,7 +129,6 @@ $(document).ready(function(){
 		var doctor_schedule_id = $(this).attr('data-id');
 		
 		var doctor_id = $(this).attr('doctor_id');
-		alert(doctor_id);
 
 		$.ajax({
 			url:"action.php",

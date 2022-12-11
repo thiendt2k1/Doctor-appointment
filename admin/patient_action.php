@@ -10,7 +10,7 @@ if(isset($_POST["action"]))
 {
 	if($_POST["action"] == 'fetch')
 	{
-		$order_column = array('patient_first_name', 'patient_last_name', 'patient_email_address', 'patient_phone_no', 'email_verify');
+		$order_column = array('patient_first_name', 'patient_last_name', 'patient_email_address', 'patient_phone_no');
 
 		$output = array();
 
@@ -25,7 +25,6 @@ if(isset($_POST["action"]))
 			$search_query .= 'OR patient_last_name LIKE "%'.$_POST["search"]["value"].'%" ';
 			$search_query .= 'OR patient_email_address LIKE "%'.$_POST["search"]["value"].'%" ';
 			$search_query .= 'OR patient_phone_no LIKE "%'.$_POST["search"]["value"].'%" ';
-			$search_query .= 'OR email_verify LIKE "%'.$_POST["search"]["value"].'%" ';
 		}
 
 		if(isset($_POST["order"]))
@@ -70,15 +69,7 @@ if(isset($_POST["action"]))
 			$sub_array[] = $row["patient_email_address"];
 			$sub_array[] = $row["patient_phone_no"];
 			$status = '';
-			if($row["email_verify"] == 'Yes')
-			{
-				$status = '<span class="badge badge-success">Yes</span>';
-			}
-			else
-			{
-				$status = '<span class="badge badge-danger">No</span>';
-			}
-			$sub_array[] = $status;
+			
 			$sub_array[] = '
 			<div align="center">
 			<button type="button" name="view_button" class="btn btn-info btn-circle btn-sm view_button" data-id="'.$row["patient_id"].'"><i class="fas fa-eye"></i></button>
@@ -224,14 +215,6 @@ if(isset($_POST["action"]))
 			$data['patient_address'] = $row['patient_address'];
 			$data['patient_phone_no'] = $row['patient_phone_no'];
 			$data['patient_maritial_status'] = $row['patient_maritial_status'];
-			if($row['email_verify'] == 'Yes')
-			{
-				$data['email_verify'] = '<span class="badge badge-success">Yes</span>';
-			}
-			else
-			{
-				$data['email_verify'] = '<span class="badge badge-danger">No</span>';
-			}
 		}
 
 		echo json_encode($data);

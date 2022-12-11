@@ -62,16 +62,16 @@ $(document).ready(function(){
 	$('#patient_login_form').parsley();
 
 	$('#patient_login_form').on('submit', function(event){
-
+		
 		event.preventDefault();
 
 		if($('#patient_login_form').parsley().isValid())
 		{
 			$.ajax({
 
-				url:"action.php",
-				method:"POST",
-				data:$(this).serialize(),
+				url: "action.php",
+				method: "POST",
+				data: $(this).serialize(),
 				dataType:"json",
 				beforeSend:function()
 				{

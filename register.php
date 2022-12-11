@@ -63,11 +63,11 @@ include('header.php');
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<label>Patient Maritial Status<span class="text-danger">*</span></label>
-									<select name="patient_maritial_status" id="patient_maritial_status" class="form-control">
+									<label>Patient Marital Status<span class="text-danger">*</span></label>
+									<select name="patient_marital_status" id="patient_maritial_status" class="form-control">
 										<option value="Single">Single</option>
 										<option value="Married">Married</option>
-										<option value="Seperated">Seperated</option>
+										<option value="Separated">Separated</option>
 										<option value="Divorced">Divorced</option>
 										<option value="Widowed">Widowed</option>
 									</select>
@@ -84,7 +84,7 @@ include('header.php');
 						</div>
 
 						<div class="form-group text-center">
-							<p><a href="auth/login.php">Login</a></p>
+							<p><a href="login.php">Login</a></p>
 						</div>
 					</form>
 				</div>
@@ -113,16 +113,16 @@ $(document).ready(function(){
 	$('#patient_register_form').parsley();
 
 	$('#patient_register_form').on('submit', function(event){
-
+		
 		event.preventDefault();
 
 		if($('#patient_register_form').parsley().isValid())
 		{
 			$.ajax({
-				url:"action.php",
-				method:"POST",
-				data:$(this).serialize(),
-				dataType:'json',
+				url: "action.php",
+				method: "POST",
+				data: $(this).serialize(),
+				dataType: 'json',
 				beforeSend:function(){
 					$('#patient_register_button').attr('disabled', 'disabled');
 				},

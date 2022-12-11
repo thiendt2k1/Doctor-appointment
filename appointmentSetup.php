@@ -375,7 +375,7 @@
         <nav id="navbar">
         <ul>
           <li><a href="">Request Meeting</a></li>
-          <li><a href="/auth/login.php">Login</a></li>
+          <li><a href="login.php">Login</a></li>
         </ul>
       </nav>
       </div>

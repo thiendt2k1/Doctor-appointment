@@ -131,8 +131,6 @@ $(document).ready(function(){
 
                 html += '<tr><th width="40%" class="text-right">Maritial Status</th><td width="60%">'+data.patient_maritial_status+'</td></tr>';
 
-                html += '<tr><th width="40%" class="text-right">Email Verification Status</th><td width="60%">'+data.email_verify+'</td></tr>';
-
                 html += '</table></div>';
 
                 $('#viewModal').modal('show');
