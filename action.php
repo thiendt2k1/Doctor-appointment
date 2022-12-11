@@ -12,14 +12,13 @@ if(isset($_POST["action"]))
 	{
 		if(isset($_SESSION['patient_id']))
 		{
-			echo 'dashboard.php';
+			echo 'auth/dashboard.php';
 		}
 		else
 		{
 			echo 'login.php';
 		}
 	}
-
 	if($_POST['action'] == 'patient_register')
 	{
 		$error = '';
@@ -58,53 +57,21 @@ if(isset($_POST["action"]))
 				':patient_verification_code'	=>	$patient_verification_code,
 				':email_verify'					=>	'No'
 			);
-
-			$object->query = "
+			try {
+				$object->query = "
 			INSERT INTO patient_table 
 			(patient_email_address, patient_password, patient_first_name, patient_last_name, patient_date_of_birth, patient_gender, patient_address, patient_phone_no, patient_maritial_status, patient_added_on, patient_verification_code, email_verify) 
 			VALUES (:patient_email_address, :patient_password, :patient_first_name, :patient_last_name, :patient_date_of_birth, :patient_gender, :patient_address, :patient_phone_no, :patient_maritial_status, :patient_added_on, :patient_verification_code, :email_verify)
 			";
 
-			$object->execute($data);
-
-			require 'class/class.phpmailer.php';
-			$mail = new PHPMailer;
-			$mail->IsSMTP();
-			$mail->Host = 'smtpout.secureserver.net';
-			$mail->Port = '80';
-			$mail->SMTPAuth = true;
-			$mail->Username = 'xxxxx';
-			$mail->Password = 'xxxxx';
-			$mail->SMTPSecure = '';
-			$mail->From = 'tutorial@webslesson.info';
-			$mail->FromName = 'Webslesson';
-			$mail->AddAddress($_POST["patient_email_address"]);
-			$mail->WordWrap = 50;
-			$mail->IsHTML(true);
-			$mail->Subject = 'Verification code for Verify Your Email Address';
-
-			$message_body = '
-			<p>For verify your email address, Please click on this <a href="'.$object->base_url.'verify.php?code='.$patient_verification_code.'"><b>link</b></a>.</p>
-			<p>Sincerely,</p>
-			<p>Webslesson.info</p>
-			';
-			$mail->Body = $message_body;
-
-			if($mail->Send())
-			{
-				$success = '<div class="alert alert-success">Please Check Your Email for email Verification</div>';
+				$object->execute($data);
+				//insert into database
 			}
-			else
-			{
-				$error = '<div class="alert alert-danger">' . $mail->ErrorInfo . '</div>';
+			catch(PDOException $e){
+				echo "Register failed: " . $e->getMessage();
 			}
 		}
 
-		$output = array(
-			'error'		=>	$error,
-			'success'	=>	$success
-		);
-		echo json_encode($output);
 	}
 
 	if($_POST['action'] == 'patient_login')

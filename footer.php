@@ -1,4 +1,5 @@
-			
+<!-- Insert something more, not only google map, about us: location, phone number, who in charge, student id -->
+
 	    </div>
 		<!-- Bootstrap core JavaScript-->
 	    <script src="vendor/jquery/jquery.min.js"></script>
@@ -14,6 +15,6 @@
 	    <!-- Page level plugins -->
 	    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
 	    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
+		
 	</body>
 </html>

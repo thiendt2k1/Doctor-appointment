@@ -20,7 +20,7 @@ if(isset($_GET["code"]))
 
 	$_SESSION['success_message'] = '<div class="alert alert-success">You Email has been verify, now you can login into system</div>';
 
-	header('location:login.php');
+	header('location:auth/login.php');
 }
 
 include('footer.php');

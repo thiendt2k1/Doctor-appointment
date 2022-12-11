@@ -15,7 +15,7 @@ $object->query = "
 SELECT * FROM doctor_schedule_table 
 INNER JOIN doctor_table 
 ON doctor_table.doctor_id = doctor_schedule_table.doctor_id
-WHERE doctor_schedule_table.doctor_schedule_date >= '".date('Y-m-d')."' 
+WHERE doctor_schedule_table.doctor_schedule_date >= '".'1/1/2019'."' 
 AND doctor_schedule_table.doctor_schedule_status = 'Active' 
 AND doctor_table.doctor_status = 'Active' 
 ORDER BY doctor_schedule_table.doctor_schedule_date ASC

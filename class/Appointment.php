@@ -4,7 +4,7 @@
 
 class Appointment
 {
-	public $base_url = 'http://localhost/tutorial/doctor-appointment-management-system/';
+	public $base_url = 'http://localhost/';
 	public $connect;
 	public $query;
 	public $statement;
@@ -46,7 +46,8 @@ class Appointment
 
 	function get_result()
 	{
-		return $this->connect->query($this->query, PDO::FETCH_ASSOC);
+		// return $this->connect->prepare($this->query)->execute();
+		return $this->connect->query($this->query)->fetchAll(PDO::FETCH_ASSOC);// , PDO::FETCH_ASSOC);
 	}
 
 	function is_login()
@@ -126,7 +127,7 @@ class Appointment
 		";
 		$this->execute();
 		return $this->row_count();
-	}
+	} 
 
 	function get_total_seven_day_appointment()
 	{

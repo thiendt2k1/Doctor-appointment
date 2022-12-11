@@ -84,7 +84,7 @@ include('header.php');
 						</div>
 
 						<div class="form-group text-center">
-							<p><a href="login.php">Login</a></p>
+							<p><a href="auth/login.php">Login</a></p>
 						</div>
 					</form>
 				</div>

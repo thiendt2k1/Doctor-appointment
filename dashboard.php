@@ -10,6 +10,18 @@ $object = new Appointment;
 
 include('header.php');
 
+$object->query = "
+SELECT * FROM doctor_schedule_table 
+INNER JOIN doctor_table 
+ON doctor_table.doctor_id = doctor_schedule_table.doctor_id
+WHERE doctor_schedule_table.doctor_schedule_date >= '".'1/1/2019'."' 
+AND doctor_schedule_table.doctor_schedule_status = 'Active' 
+AND doctor_table.doctor_status = 'Active' 
+ORDER BY doctor_schedule_table.doctor_schedule_date ASC
+";
+
+$result = $object->get_result();
+
 ?>
 
 <div class="container-fluid">
@@ -18,27 +30,41 @@ include('header.php');
 	?>
 	<br />
 	<div class="card">
-		<div class="card-header"><h4>Doctor Schedule List</h4></div>
-			<div class="card-body">
-				<div class="table-responsive">
-		      		<table class="table table-striped table-bordered" id="appointment_list_table">
-		      			<thead>
-			      			<tr>
-			      				<th>Doctor Name</th>
-			      				<th>Education</th>
-			      				<th>Speciality</th>
-			      				<th>Appointment Date</th>
-			      				<th>Appointment Day</th>
-			      				<th>Available Time</th>
-			      				<th>Action</th>
-			      			</tr>
-			      		</thead>
-			      		<tbody></tbody>
-			      	</table>
-			    </div>
-			</div>
-		</div>
-	</div>
+		      		<form method="post" action="result.php">
+			      		<div class="card-header"><h3><b>Doctor Schedule List</b></h3></div>
+			      		<div class="card-body">
+		      				<div class="table-responsive">
+		      					<table class="table table-striped table-bordered">
+		      						<tr>
+		      							<th>Doctor Name</th>
+		      							<th>Education</th>
+		      							<th>Speciality</th>
+		      							<th>Appointment Date</th>
+		      							<th>Appointment Day</th>
+		      							<th>Available Time</th>
+		      							<th>Action</th>
+		      						</tr>
+		      						<?php
+		      						foreach($result as $row)
+		      						{
+		      							echo '
+		      							<tr>
+		      								<td>'.$row["doctor_name"].'</td>
+		      								<td>'.$row["doctor_degree"].'</td>
+		      								<td>'.$row["doctor_expert_in"].'</td>
+		      								<td>'.$row["doctor_schedule_date"].'</td>
+		      								<td>'.$row["doctor_schedule_day"].'</td>
+		      								<td>'.$row["doctor_schedule_start_time"].' - '.$row["doctor_schedule_end_time"].'</td>
+		      								<td><button type="button" name="get_appointment" class="btn btn-primary btn-sm get_appointment" data-id="'.$row["doctor_schedule_id"].'">Get Appointment</button></td>
+		      							</tr>
+		      							';
+		      						}
+		      						?>
+		      					</table>
+		      				</div>
+		      			</div>
+		      		</form>
+		      	</div>
 
 </div>
 
@@ -101,6 +127,7 @@ $(document).ready(function(){
 	$(document).on('click', '.get_appointment', function(){
 
 		var doctor_schedule_id = $(this).data('doctor_schedule_id');
+		
 		var doctor_id = $(this).data('doctor_id');
 
 		$.ajax({
