@@ -1,15 +1,4 @@
 #PHP Doctor Appointment System
-
-./bootstrap: contain bootstrap framework. <br />
-./font: contain font. <br />
-./img: contain img. <br />
-./views: contain files to display front-end. <br />
-./models: contain php files to deploy back-end. <br />
-./controllers: contain php to deploy back-end. <br />
-./migrations: update database. <br />
-./middlewares: contain middleware. <br />
-./core: contain the core classes. <br />
-
 ## SET UP
 ### Installation
 1. To run php and mysql conveniently together install XAMPP: 
