@@ -55,7 +55,7 @@ $result = $object->get_result();
 		      								<td>'.$row["doctor_schedule_date"].'</td>
 		      								<td>'.$row["doctor_schedule_day"].'</td>
 		      								<td>'.$row["doctor_schedule_start_time"].' - '.$row["doctor_schedule_end_time"].'</td>
-		      								<td><button type="button" name="get_appointment" class="btn btn-primary btn-sm get_appointment" data-id="'.$row["doctor_schedule_id"].'">Get Appointment</button></td>
+		      								<td><button type="button" name="get_appointment" class="btn btn-primary btn-sm get_appointment" data-id="'.$row["doctor_schedule_id"].'" doctor_id="'.$row["doctor_id"].'">Get Appointment</button></td>
 		      							</tr>
 		      							';
 		      						}
@@ -126,9 +126,10 @@ $(document).ready(function(){
 
 	$(document).on('click', '.get_appointment', function(){
 
-		var doctor_schedule_id = $(this).data('doctor_schedule_id');
+		var doctor_schedule_id = $(this).attr('data-id');
 		
-		var doctor_id = $(this).data('doctor_id');
+		var doctor_id = $(this).attr('doctor_id');
+		alert(doctor_id);
 
 		$.ajax({
 			url:"action.php",
