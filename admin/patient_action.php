@@ -168,15 +168,15 @@ if(isset($_POST["action"]))
 			if($error == '')
 			{
 				$data = array(
-					':doctor_email_address'			=>	$object->test_input($_POST["doctor_email_address"]),
+					':doctor_email_address'			=>	$object->clean_input($_POST["doctor_email_address"]),
 					':doctor_password'				=>	$_POST["doctor_password"],
-					':doctor_name'					=>	$object->test_input($_POST["doctor_name"]),
+					':doctor_name'					=>	$object->clean_input($_POST["doctor_name"]),
 					':doctor_profile_image'			=>	$doctor_profile_image,
-					':doctor_phone_no'				=>	$object->test_input($_POST["doctor_phone_no"]),
-					':doctor_address'				=>	$object->test_input($_POST["doctor_address"]),
-					':doctor_date_of_birth'			=>	$object->test_input($_POST["doctor_date_of_birth"]),
-					':doctor_degree'				=>	$object->test_input($_POST["doctor_degree"]),
-					':doctor_expert_in'				=>	$object->test_input($_POST["doctor_expert_in"]),
+					':doctor_phone_no'				=>	$object->clean_input($_POST["doctor_phone_no"]),
+					':doctor_address'				=>	$object->clean_input($_POST["doctor_address"]),
+					':doctor_date_of_birth'			=>	$object->clean_input($_POST["doctor_date_of_birth"]),
+					':doctor_degree'				=>	$object->clean_input($_POST["doctor_degree"]),
+					':doctor_expert_in'				=>	$object->clean_input($_POST["doctor_expert_in"]),
 					':doctor_status'				=>	'Active',
 					':doctor_added_on'				=>	$object->now
 				);
@@ -293,15 +293,15 @@ if(isset($_POST["action"]))
 			if($error == '')
 			{
 				$data = array(
-					':doctor_email_address'			=>	$object->test_input($_POST["doctor_email_address"]),
+					':doctor_email_address'			=>	$object->clean_input($_POST["doctor_email_address"]),
 					':doctor_password'				=>	$_POST["doctor_password"],
-					':doctor_name'					=>	$object->test_input($_POST["doctor_name"]),
+					':doctor_name'					=>	$object->clean_input($_POST["doctor_name"]),
 					':doctor_profile_image'			=>	$doctor_profile_image,
-					':doctor_phone_no'				=>	$object->test_input($_POST["doctor_phone_no"]),
-					':doctor_address'				=>	$object->test_input($_POST["doctor_address"]),
-					':doctor_date_of_birth'			=>	$object->test_input($_POST["doctor_date_of_birth"]),
-					':doctor_degree'				=>	$object->test_input($_POST["doctor_degree"]),
-					':doctor_expert_in'				=>	$object->test_input($_POST["doctor_expert_in"])
+					':doctor_phone_no'				=>	$object->clean_input($_POST["doctor_phone_no"]),
+					':doctor_address'				=>	$object->clean_input($_POST["doctor_address"]),
+					':doctor_date_of_birth'			=>	$object->clean_input($_POST["doctor_date_of_birth"]),
+					':doctor_degree'				=>	$object->clean_input($_POST["doctor_degree"]),
+					':doctor_expert_in'				=>	$object->clean_input($_POST["doctor_expert_in"])
 				);
 
 				$object->query = "

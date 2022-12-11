@@ -44,15 +44,15 @@ if(isset($_POST["action"]))
 		{
 			$patient_verification_code = md5(uniqid());
 			$data = array(
-				':patient_email_address'		=>	$object->test_input($_POST["patient_email_address"]),
+				':patient_email_address'		=>	$object->clean_input($_POST["patient_email_address"]),
 				':patient_password'				=>	$_POST["patient_password"],
-				':patient_first_name'			=>	$object->test_input($_POST["patient_first_name"]),
-				':patient_last_name'			=>	$object->test_input($_POST["patient_last_name"]),
-				':patient_date_of_birth'		=>	$object->test_input($_POST["patient_date_of_birth"]),
-				':patient_gender'				=>	$object->test_input($_POST["patient_gender"]),
-				':patient_address'				=>	$object->test_input($_POST["patient_address"]),
-				':patient_phone_no'				=>	$object->test_input($_POST["patient_phone_no"]),
-				':patient_maritial_status'		=>	$object->test_input($_POST["patient_maritial_status"]),
+				':patient_first_name'			=>	$object->clean_input($_POST["patient_first_name"]),
+				':patient_last_name'			=>	$object->clean_input($_POST["patient_last_name"]),
+				':patient_date_of_birth'		=>	$object->clean_input($_POST["patient_date_of_birth"]),
+				':patient_gender'				=>	$object->clean_input($_POST["patient_gender"]),
+				':patient_address'				=>	$object->clean_input($_POST["patient_address"]),
+				':patient_phone_no'				=>	$object->clean_input($_POST["patient_phone_no"]),
+				':patient_maritial_status'		=>	$object->clean_input($_POST["patient_maritial_status"]),
 				':patient_added_on'				=>	$object->now,
 				':patient_verification_code'	=>	$patient_verification_code,
 				':email_verify'					=>	'No'
@@ -67,11 +67,9 @@ if(isset($_POST["action"]))
 				$object->execute($data);
 				//insert into database
 			}
-			$output = array(
-				'error'		=>	$error
-			);
-	
-			echo json_encode($output);
+			catch(PDOException $e){
+				echo "Register failed: " . $e->getMessage();
+			}
 		}
 
 	}
