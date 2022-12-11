@@ -18,7 +18,7 @@
 Change the httpd.conf, change both fields under 'Documentroot', save and restart Apache server.
 
 ```bash
-~/E-com-221/public 
+~/Doctor Appointment
 ```
 
 ### Generating MySQL Database:
