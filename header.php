@@ -8,7 +8,7 @@
 		<title>Doctor Appointment Management System in PHP</title>
 
 	    <!-- Custom styles for this page -->
-	    <link href="vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
+	    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 	    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
@@ -28,7 +28,7 @@
 	<body>
 		<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
 			<div class="col">
-		    	<h5 class="my-0 mr-md-auto font-weight-normal">Webslesson</h5>
+		    	<h5 class="my-0 mr-md-auto font-weight-normal">Fuck</h5>
 		    </div>
 		    <?php
 		    if(!isset($_SESSION['patient_id']))
