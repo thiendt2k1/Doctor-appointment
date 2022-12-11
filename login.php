@@ -99,15 +99,13 @@ $(document).ready(function(){
 
         const togglePassword = document.querySelector('#togglePassword');
   
-        const password = document.querySelector('#password');
+        const password = document.querySelector('#patient_password');
   
         togglePassword.addEventListener('click', () => {
   
             // Toggle the type attribute using
             // getAttribure() method
-            const type = password
-                .getAttribute('type') === 'password' ?
-                'text' : 'password';
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
                   
             password.setAttribute('type', type);
   

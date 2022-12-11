@@ -14,7 +14,7 @@ class Appointment
 	{
 		$this->connect = new PDO("mysql:host=localhost;dbname=doctor_appointment", "root", "");
 
-		date_default_timezone_set('Asia/Kolkata');
+		date_default_timezone_set('Asia/Ho_Chi_Minh');
 
 		session_start();
 
