@@ -1,7 +1,7 @@
 <!-- Insert something more, not only google map, about us: location, phone number, who in charge, student id -->
 
 	    </div>
-		<div class="contact container-fluid bg-primary text-white">
+		<div class="contact container-fluid bg-dark text-white">
 			<div class="row">
       <div class="end col-md-4 col-sm-6 sticky-footer" style="font-size:20px;">
         <div>
@@ -11,17 +11,17 @@
           <p>Telephone number: 0961551910</p>
           <p>Email: company@gmail.com</p>
 		  <p>Owners: </br>
-			 			Trần Đức Thiện - 1952998 </br>
-		  			  	Phan Đăng Khôi Nguyên - 1952366 </br>
-					   	Phạm Quang Minh - 2053234 </br>
-					   	Trần Xuân Đức - 1552102
+			 			Tran Duc Thien - 1952998 </br>
+		  			  	Phan Dang Khoi Nguyen - 1952366 </br>
+					   	Pham Quang Minh - 2053234 </br>
+					   	Tran Xuan Duc - 1552102
 		  </p>
         </div>
         <div>
           <p>Address: 268 Ly Thuong Kiet, District 10, Ho Chi Minh City, Vietnam</p>
         </div>
       </div>
-	  <div class="col-md-6 col-sm-6" id="googleMap" style="width:50%;height:auto;"></div>
+	  <div class=" col-md-6 col-sm-6" id="googleMap" style="width:50%;height:auto;"></div>
 </div>
 <!-- google js map API -->
 <script>
